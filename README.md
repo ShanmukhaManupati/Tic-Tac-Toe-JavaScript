@@ -1,5 +1,7 @@
 # Tic_Tac_Toe
 
+Implemented in vanilla javascript
+
 This Tic Tac Toe game name is 'XO'.
 It has a timer in it.
 color coding for scores and icons.

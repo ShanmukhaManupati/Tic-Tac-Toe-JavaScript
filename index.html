@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play Tic Tac Toe online with friends or against the computer. Multiplayer Tic Tac Toe game with interactive gameplay, sleek design, and intuitive controls. Join the fun now!">
+    <meta name="keywords" content="Tic Tac Toe, online Tic Tac Toe, multiplayer Tic Tac Toe, play Tic Tac Toe, Tic Tac Toe game">
+
+    <title>Play Tic Tac Toe Online - Multiplayer Tic Tac Toe Game</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="pen_cursor.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="pen_cursor.png">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <span class="title">
+                <a href="/">
+                    <span style="color: red">X</span>
+                    <span style="color: blue">O</span>
+                </a>
+            </span>
+
+            <span class="timer-box">
+                <button class="timer ripple" title="Click the button to Start/Pause timer" onclick="start()">00:00</button>
+            </span>
+
+            <div class="dark-theme">
+                <img src="" alt="">
+                <div class="container">
+                    <div class="btn"></div>
+                </div>
+                <img src="" alt="">
+            </div>
+        </div>
+
+        <div class="board">
+            <div class="row">
+                <button class="box click" id="box1" style="border-top-left-radius: 20px"></button>
+                <button class="box click" id="box2"></button>
+                <button class="box click" id="box3" style="border-top-right-radius: 20px"></button>
+            </div>
+            <div class="row">
+                <button class="box click" id="box4"></button>
+                <button class="box click" id="box5"></button>
+                <button class="box click" id="box6"></button>
+            </div>
+            <div class="row">
+                <button class="box click" id="box7" style="border-bottom-left-radius: 20px"></button>
+                <button class="box click" id="box8"></button>
+                <button class="box click" id="box9" style="border-bottom-right-radius: 20px"></button>
+            </div>
+
+            <div class="cursor">
+                <svg clip-rule="evenodd" class="cursor-color" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000"><path d="m4.481 15.659c-1.334 3.916-1.48 4.232-1.48 4.587 0 .528.46.749.749.749.352 0 .668-.137 4.574-1.492zm1.06-1.061 3.846 3.846 11.321-11.311c.195-.195.293-.45.293-.707 0-.255-.098-.51-.293-.706-.692-.691-1.742-1.74-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" fill-rule="nonzero"/></svg>
+            </div>
+        </div>
+
+        <div class="winner-alert">
+            <div class="container">
+                <div class="centered">
+                    <span class="winner"></span>
+                </div>
+                <div class="bottom-bar">
+                    <button class="alert-btn next ripple">Clear Board</button>
+                    <button class="alert-btn ripple" id="reset">New Game</button>
+                </div>
+
+                <script>
+                    var btns = document.querySelectorAll(".alert-btn");
+                    btns.forEach(btn => {
+                        btn.addEventListener("click", function() {
+                            setTimeout(() => {
+                                document.querySelector(".winner-alert").style.display = "none";
+                            }, 1000);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="bottom-tray">
+            <div class="player" id="p1-main">
+                <span class="name">Player-1</span>
+                <span class="score" id="p1"></span>
+            </div>
+
+            <div class="game-bottom-tray-btns">
+                <button class="reset" id="clear">Clear Board</button>
+                <button class="reset" id="reset">New Game</button>
+            </div>
+
+            <div class="player" id="p2-main">
+                <span class="name">Player-2</span>
+                <span class="score" id="p2"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed:', error);
+            });
+        }
+    </script>      
+</body>
+</html>
